@@ -8,10 +8,16 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    @customer.save
-    # redirect_to @customerはredirect_to customer_path(@customer)と同じ動きになる
-    # showにリダイレクトされる
-    redirect_to @customer
+    # @customer.save
+    # redirect_to @customer
+    # 上記2行の記述を下記に修正
+    if @customer.save
+      redirect_to @customer
+    else
+      render :new
+    end
+    # render :newの場合、newアクションは実行されず、newのviewだけ表示される
+    
   end
 
   def edit

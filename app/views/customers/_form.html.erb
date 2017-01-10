@@ -1,0 +1,18 @@
+<!--form_forで@customerを渡すと、すでに登録されているデータなのか
+　　未登録のデータなのかRailsで判断してくれるため、編集の際に
+　　url: {action: :update }と指定しなくてよい-->
+<%= form_for(@customer) do |f| %>
+    <div class = "form-group">
+        <%= f.label :family_name %><br>
+        <%= f.text_field :family_name, class: "form-control" %>
+    </div>
+    <div class = "form-group">
+        <%= f.label :given_name %><br>
+        <%= f.text_field :given_name, class: "form-control" %>
+    </div>
+    <div class = "form-group" >
+        <%= f.label :email %><br>
+        <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <%= f.submit "登録する", class: "btn-default" %>
+<% end %>

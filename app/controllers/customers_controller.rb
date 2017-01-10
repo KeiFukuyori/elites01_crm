@@ -30,6 +30,7 @@ class CustomersController < ApplicationController
       redirect_to @customer
     else
       render :edit
+    end
   end
 
   def show

@@ -17,8 +17,13 @@
 
 </head>
 <body>
-
-<%= yield %>
+  <!--全部のページにヘッダーを表示するためにapplication.html.erbから呼び出す。
+  　　renderメソッドを使用して呼び出す(partialは省略可能)
+  　　<%= yield %>を<div class="container">と</div>で囲っているのはBootStrapのグリッドシステムを使用するため-->
+<%= render partial: 'layouts/header' %>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

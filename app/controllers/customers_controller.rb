@@ -1,6 +1,8 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    # @customers = Customer.all
+    # 上記の内容を下記に変更
+    @customers = Customer.page(params[:page])
   end
 
   def new

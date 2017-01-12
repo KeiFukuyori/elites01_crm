@@ -28,6 +28,6 @@ Post.create(position_name: "平社員")
         given_name: given_name,
         email: email,
         company_id: rand(1..3),
-        post_id: fand(1..4)
+        post_id: rand(1..4)
         )
 end

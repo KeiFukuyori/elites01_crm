@@ -17,6 +17,7 @@
             <th>名</th>
             <th>電子メール</th>
             <th>所属会社</th>
+            <th>役職</th>
             <th>リンク</th>
           </thead>
           <tbody>
@@ -25,8 +26,10 @@
               <td><%= customer.family_name %></td>
               <td><%= customer.given_name %></td>
               <td><%= customer.email %></td>
-              <!--Customerが持っているcompany_idの情報を参照し、Companyのnameを引っ張ってくる-->
+              <!--customerが持っているcompany_idの情報を参照し、companyのnameを引っ張ってくる-->
               <td><%= customer.company.name %></td>
+              <!--customerが持っているpost_idの情報を参照し、postのposition_nameを引っ張ってくる-->
+              <td><%= customer.post.position_name %></td>
               <td><%= link_to '詳細', customer, class: "btn btn-default btn-xs" %></td>
             </tr>
             <% end %>

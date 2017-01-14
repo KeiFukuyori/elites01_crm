@@ -2,7 +2,10 @@ class CustomersController < ApplicationController
   def index
     # @customers = Customer.all
     # 上記の内容を下記に変更
-    @customers = Customer.page(params[:page])
+    # @customers = Customer.page(params[:page])
+    # 上記の内容を下記に変更
+    @q = Customer.search(params[:q])
+    @customers = @q.result(distinct: true).page(params[:page])
   end
 
   def new

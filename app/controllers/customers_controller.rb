@@ -1,4 +1,7 @@
 class CustomersController < ApplicationController
+  
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  
   def index
     # @customers = Customer.all
     # 上記の内容を下記に変更

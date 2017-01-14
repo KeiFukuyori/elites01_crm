@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # rails g controllerでメソッドを指定した場合、ルーティングがgetのみになる(下記)
   # get 'customers/index'
   # get 'customers/new'

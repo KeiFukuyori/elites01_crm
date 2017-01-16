@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     resources :customers
     root 'customers#index'
 
+    resources :comments, only: [:create, :destroy]
   
 end

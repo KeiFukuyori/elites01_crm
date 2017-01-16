@@ -45,6 +45,10 @@ class CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @comment = Comment.new # これをform_forで使う
+    
+    # @comments = Comment.where(customer_id: params[:id].to_i)
+    # associationを設定しているため、もっと簡単で直感的に置き換えることができる
+    @comments = @customer.comments
   end
 
   def destroy

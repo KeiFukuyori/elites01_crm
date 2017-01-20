@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  
+  before_action :set_customer, only: [:show, :edit, :destroy, :update]
   def index
     # @customers = Customer.all
     # 上記の内容を下記に変更
@@ -30,11 +30,11 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    # @customer = Customer.find(params[:id])　→set_customerへ
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    # @customer = Customer.find(params[:id])　→set_customerへ
     if @customer.update(customer_params)
       redirect_to @customer
     else
@@ -43,7 +43,7 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    # @customer = Customer.find(params[:id])　→set_customerへ
     @comment = Comment.new # これをform_forで使う
     
     # @comments = Comment.where(customer_id: params[:id].to_i)
@@ -52,7 +52,7 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
+    # @customer = Customer.find(params[:id]) →set_customerへ
     @customer.destroy
     redirect_to root_path
   end
@@ -67,5 +67,9 @@ class CustomersController < ApplicationController
       :company_id,
       :post_id
       )
+  end
+  
+  def set_customer
+    @customer = Customer.find(params[:id])
   end
 end

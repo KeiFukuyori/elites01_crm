@@ -4,7 +4,7 @@
         <dl>
             <dt>お名前</dt>
             <!-- < % = @customer.family_name %> < %= @customer.given_name %>を< %= @customer.full_name %>に変更-->
-            <dd style="margin:0px 0px 10px 20px"><%= @customer.full_name %>
+            <dd style="margin:0px 0px 10px 20px"><%= @customer.full_name %></dd>
             <dt>電子メール</dt>
             <dd style="margin:0px 0px 10px 20px"><%= @customer.email %></dd>
             <dt>会社名</dt>
@@ -31,6 +31,20 @@
         <% end %>
         
         <%= form_for(@comment, url: { controller: :comments, action: :create }) do |f| %>
+        <!--ここから-->
+          <% if @comment.errors.any? %>
+            <div class="alert alert-danger">
+              <p><b><%= @comment.errors.count %>件のエラーがあります。</b></p>
+
+              <ul>
+              <% @comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <!--ここまで-->
+        
           <div class="form-group">
             <%= f.label :body , '対応内容' %><br>
             <%= f.text_area :body, class: "form-control" %>

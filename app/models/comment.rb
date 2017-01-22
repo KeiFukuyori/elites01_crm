@@ -7,4 +7,6 @@ class Comment < ActiveRecord::Base
   validates :body, 
     presence: true, length: { maximum: 200 }
   validates :customer_id, presence: true
+  # user_idを必須とする
+  validates :user_id, presence: true
 end

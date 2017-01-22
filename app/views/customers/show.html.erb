@@ -20,6 +20,13 @@
         <h2>対応履歴</h2>
         <% @comments.each do |comment| %>
           <div class="media">
+            <div class = "media-left">
+              <% if comment.user.image_url.present? %>
+                <%= image_tag comment.user.image_url, width: "50", height: "50" %>
+              <% else %>
+                <%= image_tag "no-image.png", width: "50", height: "50" %>
+              <% end %>
+            </div>
             <div class="media-body">
               <%= simple_format(comment.body) %>
               <p class="text-muted">

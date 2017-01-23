@@ -55,7 +55,12 @@
           <div class="form-group">
             <!--下記について→<img height = "30", width = "30", src = "http://www.suc-ceed.com/illust/upimages/neko_big.jpg"-->
             <!--< %= image_tag 'http://www.suc-ceed.com/illust/upimages/neko_big.jpg', :size => "30x30" %>-->
-            <%= image_tag current_user.image_url, width: "50", class: "img-responsive", alt:"プロフィール画像"%><br>
+            <% if current_user.image_url.present? %>
+              <%= image_tag current_user.image_url, width: "50", height:"50" %>
+            <% else %>
+              <%= image_tag "no-image.png", width: "50" , height: "50" %>
+            <% end %>
+            <!--< %= image_tag current_user.image_url, width: "50", class: "img-responsive", alt:"プロフィール画像"%><br>-->
             <%= f.label :body , '対応内容' %><br>
             <%= f.text_area :body, class: "form-control" %>
           </div>
